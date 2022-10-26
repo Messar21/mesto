@@ -1,0 +1,8 @@
+.elements__about {
+    color: #000000;
+    margin: 25px 15px 31px 21px;
+    display: grid;
+    grid-template-columns: 75% auto;
+    grid-template-rows: 23px;
+    align-items: flex-start;
+}

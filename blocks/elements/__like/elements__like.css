@@ -1,0 +1,5 @@
+.elements__like {
+    margin: 5px 5px 0 auto;
+    max-width: 22px;
+    justify-self: flex-end;
+}
