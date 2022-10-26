@@ -2,6 +2,8 @@
     font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
     max-width: 1280px;
     min-width: 320px;
+    height: 100%;
+    position: relative;
     color: #FFFFFF;
     margin: 0 48px;
     -webkit-font-smoothing: antialiased;
