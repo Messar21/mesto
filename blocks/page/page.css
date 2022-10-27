@@ -12,3 +12,15 @@
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .page {
+        margin: 0 24px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .page {
+        margin: 0 19px;
+    }
+}
