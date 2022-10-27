@@ -8,8 +8,8 @@ let formName = formElement.querySelector('.popup__item-name');
 let formAbout = formElement.querySelector('.popup__item-about');
 function openPopup() {
     popupOpen.classList.add('popup_opened');
-    formName.setAttribute('value', name.textContent);
-    formAbout.setAttribute('value', about.textContent);
+    formName.value = name.textContent;
+    formAbout.value = about.textContent;
 }
 
 function closePopup() {
@@ -18,10 +18,8 @@ function closePopup() {
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); //
-    let nameText = formName.value;
-    let aboutText = formAbout.value;
-    name.textContent = nameText;
-    about.textContent = aboutText;
+    name.textContent = formName.value;
+    about.textContent = formAbout.value;
 
     closePopup();
 }
