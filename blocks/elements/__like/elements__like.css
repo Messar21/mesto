@@ -2,4 +2,10 @@
     margin: 5px 5px 0 auto;
     max-width: 22px;
     justify-self: flex-end;
+    transition: opacity ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.elements__like:hover {
+    opacity: 0.5;
 }

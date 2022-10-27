@@ -6,4 +6,10 @@
     margin: 48px 0 0;
     padding: 0;
     border: 0;
+    transition: opacity ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.popup__save:hover {
+    opacity: 0.8;
 }
