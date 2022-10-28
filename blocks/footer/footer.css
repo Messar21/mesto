@@ -4,3 +4,15 @@
     display: flex;
     align-items: baseline;
 }
+
+@media screen and (max-width: 976px) {
+    .footer {
+        margin: 0 40px 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        margin: 0 19px 36px;
+    }
+}

@@ -5,22 +5,9 @@
     height: 100%;
     position: relative;
     color: #FFFFFF;
-    margin: 0 48px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
-}
-
-@media screen and (max-width: 768px) {
-    .page {
-        margin: 0 24px;
-    }
-}
-
-@media screen and (max-width: 425px) {
-    .page {
-        margin: 0 19px;
-    }
 }

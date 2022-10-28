@@ -1,6 +1,5 @@
 .elements {
     max-width: 880px;
-    width: 100%;
     margin: 51px auto 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -9,9 +8,23 @@
     grid-row-gap: 20px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 976px) {
+    .elements {
+        margin: 51px 40px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .elements {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
+        margin: 36px 19px 0;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .elements {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
     }
 }
