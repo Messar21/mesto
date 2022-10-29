@@ -5,9 +5,9 @@
     align-items: baseline;
 }
 
-@media screen and (max-width: 976px) {
+@media screen and (max-width: 928px) {
     .footer {
-        margin: 0 40px 60px;
+        margin: 0 24px 60px;
     }
 }
 

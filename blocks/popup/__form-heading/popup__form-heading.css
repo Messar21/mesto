@@ -6,3 +6,11 @@
     line-height: 29px;
     max-height: 23px;
 }
+
+@media screen and (max-width: 610px) {
+    .popup__form-heading {
+        margin: 0 0 75px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

@@ -20,7 +20,6 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); //
     name.textContent = formName.value;
     about.textContent = formAbout.value;
-
     closePopup();
 }
 

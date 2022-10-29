@@ -5,9 +5,9 @@
     display: flex;
 }
 
-@media screen and (max-width: 976px) {
+@media screen and (max-width: 928px) {
     .profile {
-        margin: 40px 40px 0;
+        margin: 40px 24px 0;
     }
 }
 
