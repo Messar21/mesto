@@ -1,7 +1,12 @@
 .elements__like {
     margin: 5px 5px 0 auto;
-    max-width: 22px;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 0;
     justify-self: flex-end;
+    background: url("../../../images/like-disabled.svg") no-repeat center;
+    background-size: contain;
     transition: opacity ease-in-out 0.2s;
     cursor: pointer;
 }

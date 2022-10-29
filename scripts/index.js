@@ -4,8 +4,8 @@ let popupClose = document.querySelector('.popup__close');
 let name = document.querySelector('.profile__name');
 let about = document.querySelector('.profile__about');
 let formElement = document.querySelector('.popup__form-container')
-let formName = formElement.querySelector('.popup__item-name');
-let formAbout = formElement.querySelector('.popup__item-about');
+let formName = formElement.querySelector('.popup__item_type_name');
+let formAbout = formElement.querySelector('.popup__item_type_about');
 function openPopup() {
     popupOpen.classList.add('popup_opened');
     formName.value = name.textContent;
