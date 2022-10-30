@@ -6,6 +6,8 @@ let about = document.querySelector('.profile__about');
 let formElement = document.querySelector('.popup__form-container')
 let formName = formElement.querySelector('.popup__item_type_name');
 let formAbout = formElement.querySelector('.popup__item_type_about');
+let like = document.querySelectorAll('.elements__like');
+
 function openPopup() {
     popupOpen.classList.add('popup_opened');
     formName.value = name.textContent;
@@ -23,6 +25,13 @@ function formSubmitHandler (evt) {
     closePopup();
 }
 
+function liked(e) {
+    e.target.classList.toggle('elements__like_active');
+}
+
 formElement.addEventListener('submit', formSubmitHandler);
 editButton.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
+for (let i = 0; i < like.length; i++) {
+    like[i].addEventListener('click', liked);
+}
