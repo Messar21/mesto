@@ -23,48 +23,6 @@
         </section>
         <section aria-label="Фотографии" class="elements">
             <ul class="elements__list">
-                <li class="elements__item">
-                    <img class="elements__photo" src="images/photo-grid-karachaevsk.jpg" alt="Храм в горах">
-                    <div class="elements__about">
-                        <h2 class="elements__name">Карачаевск</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__photo" src="images/photo-grid-elbrus.jpg" alt="Гора на горизонте">
-                    <div class="elements__about">
-                        <h2 class="elements__name">Гора Эльбрус</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__photo" src="images/photo-grid-dombai.jpg" alt="Лес и горы">
-                    <div class="elements__about">
-                        <h2 class="elements__name">Домбай</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__photo" src="images/photo-grid-elbrus.jpg" alt="Гора на горизонте">
-                    <div class="elements__about">
-                        <h2 class="elements__name">Гора Эльбрус</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__photo" src="images/photo-grid-dombai.jpg" alt="Лес и горы">
-                    <div class="elements__about">
-                        <h2 class="elements__name">Домбай</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__item">
-                    <img class="elements__photo" src="images/photo-grid-karachaevsk.jpg" alt="Храм в горах">
-                    <div class="elements__about">
-                        <h2 class="elements__name">Карачаево-Черкессия</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
             </ul>
         </section>
     </main>
@@ -83,6 +41,15 @@
         </div>
     </div>
 </div>
+<template id="photo-template">
+    <li class="elements__item">
+        <img class="elements__photo">
+        <div class="elements__about">
+            <h2 class="elements__name"></h2>
+            <button class="elements__like" type="button"></button>
+        </div>
+    </li>
+</template>
 <script src="scripts/index.js"></script>
 </body>
 </html>
