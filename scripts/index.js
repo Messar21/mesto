@@ -47,6 +47,9 @@ function createCard (initCard) {
     const photo = newCard.querySelector('.elements__photo');
     photo.src = initCard.link;
 
+    const likeBtn = newCard.querySelector('.elements__like');
+    likeBtn.addEventListener('click', liked);
+
     return newCard
 }
 
@@ -82,6 +85,3 @@ function liked(e) {
 formElement.addEventListener('submit', formSubmitHandler);
 editButton.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
-for (let i = 0; i < like.length; i++) {
-    like[i].addEventListener('click', liked);
-}
