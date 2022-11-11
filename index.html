@@ -29,14 +29,25 @@
     <footer class="footer">
         <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_editBtn">
         <div class="popup__container">
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close popup__close_editBtn" type="button"></button>
             <form name="profile-edit" class="popup__form-container">
                 <h2 class="popup__form-heading">Редактировать профиль</h2>
                 <input class="popup__item popup__item_type_name" type="text" name="name">
                 <input class="popup__item popup__item_type_about" type="text" name="about">
                 <button class="popup__save" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_addBtn">
+        <div class="popup__container">
+            <button class="popup__close popup__close_addBtn" type="button"></button>
+            <form name="add-card" class="popup__form-container">
+                <h2 class="popup__form-heading">Новое место</h2>
+                <input class="popup__item popup__item_type_name" placeholder="Название" type="text" name="name">
+                <input class="popup__item popup__item_type_about" placeholder="Ссылка на картинку" type="text" name="href">
+                <button class="popup__save" type="submit">Создать</button>
             </form>
         </div>
     </div>

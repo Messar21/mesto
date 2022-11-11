@@ -1,13 +1,15 @@
 let editButton = document.querySelector('.profile__edit-button');
-let popupOpen = document.querySelector('.popup');
-let popupClose = document.querySelector('.popup__close');
+let popupOpen = document.querySelector('.popup_editBtn');
+let popupClose = document.querySelector('.popup__close_editBtn');
 let name = document.querySelector('.profile__name');
 let about = document.querySelector('.profile__about');
 let formElement = document.querySelector('.popup__form-container')
 let formName = formElement.querySelector('.popup__item_type_name');
 let formAbout = formElement.querySelector('.popup__item_type_about');
-let like = document.querySelectorAll('.elements__like');
 let cardsContainer = document.querySelector('.elements__list');
+let addBtn = document.querySelector('.profile__add-button');
+let popupCards = document.querySelector('.popup_addBtn');
+let addPopupClose = document.querySelector('.popup__close_addBtn');
 
 const templateCard = document.querySelector('#photo-template').content.querySelector('.elements__item');
 
@@ -67,8 +69,8 @@ function openPopup() {
     formAbout.value = about.textContent;
 }
 
-function closePopup() {
-    popupOpen.classList.remove('popup_opened')
+function closePopup(e) {
+    e.target.closest('.popup').classList.remove('popup_opened');
 }
 
 function formSubmitHandler (evt) {
@@ -82,6 +84,12 @@ function liked(e) {
     e.target.classList.toggle('elements__like_active');
 }
 
+function openAddCard() {
+    popupCards.classList.add('popup_opened');
+}
+
 formElement.addEventListener('submit', formSubmitHandler);
 editButton.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
+addBtn.addEventListener('click', openAddCard);
+addPopupClose.addEventListener('click', closePopup);
