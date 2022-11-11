@@ -1,4 +1,5 @@
 .elements__item {
+    position: relative;
     background-color: #FFFFFF;
     width: 100%;
     display: flex;

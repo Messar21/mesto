@@ -59,6 +59,9 @@ function createCard (initCard) {
     const likeBtn = newCard.querySelector('.elements__like');
     likeBtn.addEventListener('click', liked);
 
+    const deleteBtn = newCard.querySelector('.element__delete');
+    deleteBtn.addEventListener('click', deleteCard);
+
     return newCard
 }
 
@@ -104,6 +107,11 @@ function addCardHandler (evt) {
     addCard(initCard);
     formCardName.value = '';
     formCardLink.value = '';
+}
+
+function deleteCard(evt) {
+    let card = evt.target.closest('.elements__item');
+    card.remove();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
