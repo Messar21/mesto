@@ -1,4 +1,4 @@
-.element__delete {
+.elements__delete {
     width: 18px;
     height: 19px;
     background: url("../../../images/Trash.svg") no-repeat center;
@@ -12,6 +12,6 @@
     right: 20px;
 }
 
-.element__delete:hover {
+.elements__delete:hover {
     opacity: 0.6;
 }

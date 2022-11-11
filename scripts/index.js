@@ -18,6 +18,10 @@ let formElementCard = document.querySelector('.popup__form-container_type_add');
 let formCardName = formElementCard.querySelector('.popup__item_type_name-card');
 let formCardLink = formElementCard.querySelector('.popup__item_type_link');
 
+let popupImage = document.querySelector('.image-popup');
+let popupSrc = popupImage.querySelector('.image-popup__image');
+let imageCaption = document.querySelector('.image-popup__caption');
+
 const templateCard = document.querySelector('#photo-template').content.querySelector('.elements__item');
 
 const initialCards = [
@@ -59,8 +63,11 @@ function createCard (initCard) {
     const likeBtn = newCard.querySelector('.elements__like');
     likeBtn.addEventListener('click', liked);
 
-    const deleteBtn = newCard.querySelector('.element__delete');
+    const deleteBtn = newCard.querySelector('.elements__delete');
     deleteBtn.addEventListener('click', deleteCard);
+
+    const image = newCard.querySelector('.elements__photo');
+    image.addEventListener('click', openImage);
 
     return newCard
 }
@@ -79,8 +86,8 @@ function openPopup() {
     formAbout.value = about.textContent;
 }
 
-function closePopup(e) {
-    e.target.closest('.popup').classList.remove('popup_opened');
+function closePopup(evt) {
+    evt.target.closest('.popup').classList.remove('popup_opened');
 }
 
 function formSubmitHandler (evt) {
@@ -90,8 +97,8 @@ function formSubmitHandler (evt) {
     closePopup(evt);
 }
 
-function liked(e) {
-    e.target.classList.toggle('elements__like_active');
+function liked(evt) {
+    evt.target.classList.toggle('elements__like_active');
 }
 
 function openAddCard() {
@@ -112,6 +119,13 @@ function addCardHandler (evt) {
 function deleteCard(evt) {
     let card = evt.target.closest('.elements__item');
     card.remove();
+}
+
+function openImage(evt) {
+    popupImage.classList.add('popup_opened');
+    popupSrc.src = evt.target.src;
+    let a = evt.target.nextSibling;
+    console.log(a);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
