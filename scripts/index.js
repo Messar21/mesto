@@ -1,15 +1,22 @@
 let editButton = document.querySelector('.profile__edit-button');
-let popupOpen = document.querySelector('.popup_editBtn');
-let popupClose = document.querySelector('.popup__close_editBtn');
+let popupOpen = document.querySelector('.popup_type_edit');
+let popupClose = document.querySelector('.popup__close_type_edit');
+
 let name = document.querySelector('.profile__name');
 let about = document.querySelector('.profile__about');
-let formElement = document.querySelector('.popup__form-container')
+
+let formElement = document.querySelector('.popup__form-container_type_edit');
 let formName = formElement.querySelector('.popup__item_type_name');
 let formAbout = formElement.querySelector('.popup__item_type_about');
+
 let cardsContainer = document.querySelector('.elements__list');
 let addBtn = document.querySelector('.profile__add-button');
-let popupCards = document.querySelector('.popup_addBtn');
-let addPopupClose = document.querySelector('.popup__close_addBtn');
+let popupCards = document.querySelector('.popup_type_add');
+let addPopupClose = document.querySelector('.popup__close_type_add');
+
+let formElementCard = document.querySelector('.popup__form-container_type_add');
+let formCardName = formElementCard.querySelector('.popup__item_type_name-card');
+let formCardLink = formElementCard.querySelector('.popup__item_type_link');
 
 const templateCard = document.querySelector('#photo-template').content.querySelector('.elements__item');
 
@@ -74,10 +81,10 @@ function closePopup(e) {
 }
 
 function formSubmitHandler (evt) {
-    evt.preventDefault(); //
+    evt.preventDefault();
     name.textContent = formName.value;
     about.textContent = formAbout.value;
-    closePopup();
+    closePopup(evt);
 }
 
 function liked(e) {
@@ -88,8 +95,21 @@ function openAddCard() {
     popupCards.classList.add('popup_opened');
 }
 
+function addCardHandler (evt) {
+    evt.preventDefault();
+    const initCard = {
+        name: formCardName.value,
+        link: formCardLink.value,
+    }
+    addCard(initCard);
+    formCardName.value = '';
+    formCardLink.value = '';
+}
+
 formElement.addEventListener('submit', formSubmitHandler);
 editButton.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
+
+formElementCard.addEventListener('submit', addCardHandler);
 addBtn.addEventListener('click', openAddCard);
 addPopupClose.addEventListener('click', closePopup);
