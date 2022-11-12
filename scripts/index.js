@@ -20,7 +20,8 @@ let formCardLink = formElementCard.querySelector('.popup__item_type_link');
 
 let popupImage = document.querySelector('.image-popup');
 let popupSrc = popupImage.querySelector('.image-popup__image');
-let imageCaption = document.querySelector('.image-popup__caption');
+let imageCaption = popupImage.querySelector('.image-popup__caption');
+let imageClose = popupImage.querySelector('.image-popup__close');
 
 const templateCard = document.querySelector('#photo-template').content.querySelector('.elements__item');
 
@@ -81,14 +82,13 @@ initialCards.forEach((initCard) => {
 });
 
 function openPopup() {
-    popupOpen.classList.add('popup_type_opened');
+    popupOpen.classList.add('popup_opened');
     formName.value = name.textContent;
     formAbout.value = about.textContent;
 }
 
 function closePopup(evt) {
-    evt.target.closest('.popup_type_opened').classList.add('popup_type_closed');
-    evt.target.closest('.popup_type_opened').classList.remove('popup_type_opened');
+    evt.target.closest('.popup_opened').classList.remove('popup_opened');
 }
 
 function formSubmitHandler (evt) {
@@ -103,8 +103,7 @@ function liked(evt) {
 }
 
 function openAddCard() {
-    popupCards.classList.add('popup_type_opened');
-    popupCards.classList.remove('popup_type_closed');
+    popupCards.classList.add('popup_opened');
 }
 
 function addCardHandler (evt) {
@@ -124,10 +123,10 @@ function deleteCard(evt) {
 }
 
 function openImage(evt) {
-    popupImage.classList.add('popup_type_opened');
+    popupImage.classList.add('popup_opened');
     popupSrc.src = evt.target.src;
-    let a = evt.target.nextSibling;
-    console.log(a);
+    let name = evt.target.nextSibling.nextSibling.querySelector('.elements__name');
+    imageCaption.textContent = name.textContent;
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -137,3 +136,4 @@ popupClose.addEventListener('click', closePopup);
 formElementCard.addEventListener('submit', addCardHandler);
 addBtn.addEventListener('click', openAddCard);
 addPopupClose.addEventListener('click', closePopup);
+imageClose.addEventListener('click', closePopup);
