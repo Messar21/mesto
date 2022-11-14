@@ -31,7 +31,7 @@
     </footer>
     <div class="popup popup_type_edit">
         <div class="popup__container">
-            <button class="popup__close popup__close_type_edit" type="button"></button>
+            <button class="popup__close" type="button"></button>
             <form name="profile-edit" class="popup__form-container popup__form-container_type_edit">
                 <h2 class="popup__form-heading">Редактировать профиль</h2>
                 <input class="popup__item popup__item_type_name" type="text" name="name">
@@ -42,7 +42,7 @@
     </div>
     <div class="popup popup_type_add">
         <div class="popup__container">
-            <button class="popup__close popup__close_type_add" type="button"></button>
+            <button class="popup__close" type="button"></button>
             <form name="add-card" class="popup__form-container popup__form-container_type_add">
                 <h2 class="popup__form-heading">Новое место</h2>
                 <input class="popup__item popup__item_type_name-card" placeholder="Название" type="text" name="name-card">
@@ -51,13 +51,13 @@
             </form>
         </div>
     </div>
-    <div class="image-popup">
-        <div class="image-popup__container">
-            <figure>
-                <img class="image-popup__image" src="#" alt="Ваше фото">
-                <figcaption class="image-popup__caption"></figcaption>
+    <div class="popup popup_type_image">
+        <div class="popup__image-container">
+            <figure class="popup__figure">
+                <img class="popup__image" src="#" alt="Ваше фото">
+                <figcaption class="popup__caption"></figcaption>
             </figure>
-            <button class="image-popup__close" type="button"></button>
+            <button class="popup__close" type="button"></button>
         </div>
     </div>
 </div>
