@@ -87,7 +87,8 @@ function openPopup(popup) {
 }
 
 function closeOnEsc (evt) {
-    const popup = document.querySelector('.popup_opened')
+    const popup = document.querySelector('.popup_opened');
+    console.log(evt.key);
     if (evt.key === 'Escape') {
         closePopup(popup);
     }
@@ -96,8 +97,8 @@ function closeOnEsc (evt) {
 function closePopup(popup) {
     if (popup.classList.contains('popup')) {
         popup.classList.remove('popup_opened');
+        document.removeEventListener('keydown', closeOnEsc);
     }
-    document.removeEventListener('keydown', closeOnEsc)
 }
 
 function editProfile (evt) {
