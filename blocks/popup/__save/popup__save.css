@@ -9,6 +9,7 @@
     margin: 31px 0 0;
     padding: 14px 0 18px;
     border: 0;
+    border-radius: 2px;
     transition: opacity ease-in-out 0.2s;
     cursor: pointer;
 }
