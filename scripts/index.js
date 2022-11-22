@@ -10,17 +10,17 @@ const popupProfile = document.querySelector('.popup_type_edit');
 
 const closeBtns = document.querySelectorAll('.popup__close');
 
-const formElement = document.querySelector('.popup__form-container_type_edit');
-const formName = formElement.querySelector('.popup__item_type_name');
-const formAbout = formElement.querySelector('.popup__item_type_about');
+const formElement = document.querySelector('.popup__form_type_edit');
+const formName = formElement.querySelector('.popup__input_type_name');
+const formAbout = formElement.querySelector('.popup__input_type_about');
 
 const cardsContainer = document.querySelector('.elements__list');
 
 const popupAddCards = document.querySelector('.popup_type_add');
 
-const formElementCard = document.querySelector('.popup__form-container_type_add');
-const formCardName = formElementCard.querySelector('.popup__item_type_name-card');
-const formCardLink = formElementCard.querySelector('.popup__item_type_link');
+const formElementCard = document.querySelector('.popup__form_type_add');
+const formCardName = formElementCard.querySelector('.popup__input_type_name-card');
+const formCardLink = formElementCard.querySelector('.popup__input_type_link');
 
 const popupImage = document.querySelector('.popup_type_image');
 const imageSrc = popupImage.querySelector('.popup__image');
