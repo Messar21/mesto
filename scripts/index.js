@@ -114,12 +114,14 @@ function likeCard(evt) {
 
 function addCardHandler (evt) {
     evt.preventDefault();
+    const popup = evt.target.closest('.popup');
     const initCard = {
         name: formCardName.value,
         link: formCardLink.value,
     }
     addCard(initCard);
     evt.target.reset();
+    closePopup(popup);
 }
 
 function deleteCard(evt) {
