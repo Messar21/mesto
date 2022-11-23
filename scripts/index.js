@@ -8,8 +8,6 @@ const popupList = document.querySelectorAll('.popup');
 
 const popupProfile = document.querySelector('.popup_type_edit');
 
-const closeBtns = document.querySelectorAll('.popup__close');
-
 const formElement = document.querySelector('.popup__form_type_edit');
 const formName = formElement.querySelector('.popup__input_type_name');
 const formAbout = formElement.querySelector('.popup__input_type_about');
@@ -94,10 +92,8 @@ function closeOnEsc (evt) {
 }
 
 function closePopup(popup) {
-    if (popup.classList.contains('popup')) {
-        popup.classList.remove('popup_opened');
-        document.removeEventListener('keydown', closeOnEsc);
-    }
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeOnEsc);
 }
 
 function editProfile (evt) {
@@ -151,14 +147,17 @@ editBtn.addEventListener('click', () => {
     openPopup(popupProfile);
 });
 
-closeBtns.forEach((button) => {
-    const popup = button.closest('.popup');
-    button.addEventListener('click', () => closePopup(popup));
-});
-
 formElementCard.addEventListener('submit', addCardHandler);
 addBtn.addEventListener('click', () => openPopup(popupAddCards));
 
 popupList.forEach((popup) => {
-    popup.addEventListener('click', (evt) => closePopup(evt.target));
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup);
+        }
+        if (evt.target.classList.contains('popup__close')) {
+            closePopup(popup);
+        }
+
+    });
 })
