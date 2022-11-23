@@ -121,6 +121,9 @@ function addCardHandler (evt) {
     }
     addCard(initCard);
     evt.target.reset();
+    const button = popup.querySelector('.popup__save');
+    button.classList.add('popup__save_disabled');
+    button.setAttribute('disabled', true);
     closePopup(popup);
 }
 
