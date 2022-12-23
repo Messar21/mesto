@@ -1,7 +1,7 @@
 class Card {
-    constructor(cardElement, templateSelector, openImage) {
-        this._name = cardElement.name;
-        this._link = cardElement.link;
+    constructor(dataCard, templateSelector, openImage) {
+        this._name = dataCard.name;
+        this._link = dataCard.link;
         this._templateSelector = templateSelector;
         this._openImage = openImage;
     }
@@ -25,7 +25,7 @@ class Card {
         const deleteBtn = this._newCard.querySelector('.elements__delete');
         deleteBtn.addEventListener('click', () => this._deleteCard());
 
-        this._photo.addEventListener('click', () => this._openImage());
+        this._photo.addEventListener('click', () => this._openImage(this._name, this._link));
     }
 
     _likeCard() {
