@@ -9,6 +9,9 @@ class FormValidator {
     }
 
     _setEventListeners() {
+        this._formElement.addEventListener('reset', () => {
+            this._disableSubmitButton();
+        });
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
         this._toggleStateButton();
@@ -22,12 +25,16 @@ class FormValidator {
 
     _toggleStateButton() {
         if (this._hasInvalidInput()) {
-            this._submitButton.classList.add(this._inactiveButtonClass);
-            this._submitButton.setAttribute('disabled', true);
+            this._disableSubmitButton();
         } else {
             this._submitButton.classList.remove(this._inactiveButtonClass);
             this._submitButton.removeAttribute('disabled');
         }
+    }
+
+    _disableSubmitButton() {
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.setAttribute('disabled', true);
     }
 
     _hasInvalidInput() {
