@@ -27,8 +27,6 @@ const popupImage = document.querySelector('.popup_type_image');
 const imageSrc = popupImage.querySelector('.popup__image');
 const imageCaption = popupImage.querySelector('.popup__caption');
 
-const templateCard = document.querySelector('#photo-template').content.querySelector('.elements__item');
-
 const initialCards = [
     {
         name: 'Архыз',
@@ -65,8 +63,8 @@ function enableValidations(options) {
 };
 
 function addCard (initCard) {
-    const card = new Card(initCard, templateCard, openImage);
-    cardsContainer.prepend(card.getView());
+    const card = new Card(initCard, '#photo-template', openImage);
+    cardsContainer.prepend(card.getCard());
 }
 
 function openImage () {
