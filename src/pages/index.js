@@ -1,9 +1,10 @@
-import FormValidator from "../scripts/FormValidator.js";
-import Card from "../scripts/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section";
 import { editBtn, name, about, addBtn, popupList, popupProfile, formElementProfile, formProfileName,
     formProfileAbout, cardsContainer, popupAddCard, formElementCard, formCardName, formCardLink, popupImage, imageSrc,
-    imageCaption, initialCards, options } from "../scripts/constants.js";
-import './../pages/index.css';
+    imageCaption, initialCards, options } from "../utils/constants.js";
+import './index.css';
 
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
@@ -60,7 +61,13 @@ function addCardHandler (evt) {
     closePopup(popupAddCard);
 }
 
-initialCards.forEach(addCard);
+const CardsSection = new Section({ items: initialCards, renderer: (dataCard) => {
+        const card = new Card(dataCard, '#photo-template', openImage);
+        const cardElement = card.getCard();
+        CardsSection.addItem(cardElement);
+    } }, '.elements__list');
+
+CardsSection.renderItems();
 
 formElementProfile.addEventListener('submit', editProfile);
 editBtn.addEventListener('click', () => {
