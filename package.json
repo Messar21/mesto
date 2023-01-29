@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "------\r Проектная работа по созданию адаптивного сайта, \r который пока только позволяет менять имя и описание профиля.\r Сайт подстраивается под разные размеры экранов, за счет чего\r удобно пользоваться им на любом устройстве.\r Редактировать профиль можно с помощью формы, которая открывается\r при нажатии кнопки редактировать. Закрыть форму без изменений можно нажав на крестик \r или на Esc.\r Вписав необходимые данные в поля формы, их можно сохранить\r нажав на кнопку \"Сохранить\" или на клавишу Enter.\r Так же есть возможность создать, лайкать и удалять карточку.\r Есть возможность увидеть увеличенное изображение карточки, нажав на неё.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Messar21/mesto.git"
+  },
+  "author": "Anton Geras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Messar21/mesto/issues"
+  },
+  "homepage": "https://github.com/Messar21/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "cssnano": "^5.1.14",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "postcss-loader": "^7.0.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "core-js": "^3.27.2"
+  }
+}

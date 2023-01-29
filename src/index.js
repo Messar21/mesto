@@ -1,8 +1,9 @@
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import Card from "../scripts/Card.js";
 import { editBtn, name, about, addBtn, popupList, popupProfile, formElementProfile, formProfileName,
     formProfileAbout, cardsContainer, popupAddCard, formElementCard, formCardName, formCardLink, popupImage, imageSrc,
-    imageCaption, initialCards, options } from "./constants.js";
+    imageCaption, initialCards, options } from "../scripts/constants.js";
+import './../pages/index.css';
 
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
