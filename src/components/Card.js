@@ -45,7 +45,6 @@ class Card {
         this._createCard();
         this._addData();
         this._setEventListeners();
-
         return this._newCard
     }
 }
