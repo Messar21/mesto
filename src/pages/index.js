@@ -1,6 +1,7 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section";
+import PopupWithImage from "../components/PopupWithImage";
 import { editBtn, name, about, addBtn, popupList, popupProfile, formElementProfile, formProfileName,
     formProfileAbout, cardsContainer, popupAddCard, formElementCard, formCardName, formCardLink, popupImage, imageSrc,
     imageCaption, initialCards, options } from "../utils/constants.js";
@@ -61,8 +62,10 @@ function addCardHandler (evt) {
     closePopup(popupAddCard);
 }
 
+const popupWithImage = new PopupWithImage('.popup_type_image');
+
 const CardsSection = new Section({ items: initialCards, renderer: (dataCard) => {
-        const card = new Card(dataCard, '#photo-template', openImage);
+        const card = new Card(dataCard, '#photo-template', popupWithImage.open);
         const cardElement = card.getCard();
         CardsSection.addItem(cardElement);
     } }, '.elements__list');
