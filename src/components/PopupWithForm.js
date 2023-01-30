@@ -6,6 +6,11 @@ export default class PopupWithForm extends Popup {
         this._submit = submit;
     }
 
+    setInputValues({ name, about}) {
+        this._popupElement.querySelector('.popup__input_type_name').value = name;
+        this._popupElement.querySelector('.popup__input_type_about').value = about;
+    }
+
     _getInputValues(selectorName, selectorAbout) {
         this.inputValueName = this._popupElement.querySelector(selectorName).value;
         this.inputValueAbout = this._popupElement.querySelector(selectorAbout).value;

@@ -3,8 +3,9 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { editBtn, name, about, addBtn, initialCards, options } from "../utils/constants.js";
+import { editBtn, addBtn, initialCards, options } from "../utils/constants.js";
 import './index.css';
+import UserInfo from "../components/UserInfo";
 
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
@@ -13,6 +14,8 @@ function enableValidations(options) {
         formValidator.enableValidation();
     });
 }
+
+const userInfo = new UserInfo({ selectorName: '.profile__name', selectorAbout: '.profile__about' });
 
 const CardsSection = new Section({ items: initialCards, renderer: (dataCard) => {
         const card = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
@@ -25,8 +28,7 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 const popupEditProfile = new PopupWithForm('.popup_type_edit', (evt) => {
     evt.preventDefault();
     popupEditProfile._getInputValues('.popup__input_type_name', '.popup__input_type_about');
-    name.textContent = popupEditProfile.inputValueName;
-    about.textContent = popupEditProfile.inputValueAbout;
+    userInfo.setUserInfo(popupEditProfile.inputValueName, popupEditProfile.inputValueAbout);
     popupEditProfile.close();
 });
 
@@ -37,7 +39,6 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', (evt) => {
         name: popupCardAdd.inputValueName,
         link: popupCardAdd.inputValueAbout,
     }
-    console.log(newCard.name);
     const handleAddCard = new Card(newCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
     const card = handleAddCard.getCard();
     CardsSection.addItem(card);
@@ -46,7 +47,10 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', (evt) => {
 
 CardsSection.renderItems();
 
-editBtn.addEventListener('click', () => popupEditProfile.open());
+editBtn.addEventListener('click', () => {
+    popupEditProfile.open();
+    popupEditProfile.setInputValues(userInfo.getUserInfo());
+});
 
 addBtn.addEventListener('click', () => popupCardAdd.open());
 

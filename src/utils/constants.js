@@ -1,7 +1,5 @@
 const profile = document.querySelector('.profile');
 const editBtn = profile.querySelector('.profile__edit-button');
-const name = profile.querySelector('.profile__name');
-const about = profile.querySelector('.profile__about');
 const addBtn = profile.querySelector('.profile__add-button');
 
 const initialCards = [
@@ -40,4 +38,4 @@ const options = {
     errorClass: 'popup__input-error_visible'
 };
 
-export { editBtn, name, about, addBtn, initialCards, options };
+export { editBtn, addBtn, initialCards, options };
