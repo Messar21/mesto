@@ -17,8 +17,7 @@ function enableValidations(options) {
 
 function createCardElement (dataCard) {
     const cardElement = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
-    const newCard = cardElement.getCard();
-    return newCard
+    return cardElement.getCard()
 }
 
 const userInfo = new UserInfo({ selectorName: '.profile__name', selectorAbout: '.profile__about' });
@@ -30,26 +29,26 @@ const cardsSection = new Section({ items: initialCards, renderer: (dataCard) => 
 
 const popupWithImage = new PopupWithImage('.popup_type_image');
 
-const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about }) => {
+const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about }, evt) => {
     evt.preventDefault();
     userInfo.setUserInfo(name, about);
     popupEditProfile.close();
 });
 
-popupEditProfile.setEventListeners();
-
-const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }) => {
+const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, evt) => {
     evt.preventDefault();
-    const newCard = {
+    const dataCard = {
         name: nameCard,
         link: link,
     }
-    const card = createCardElement(newCard);
+    const card = createCardElement(dataCard);
     cardsSection.addItem(card);
     popupCardAdd.close();
 });
 
+popupEditProfile.setEventListeners();
 popupCardAdd.setEventListeners();
+popupWithImage.setEventListeners();
 
 cardsSection.renderItems();
 

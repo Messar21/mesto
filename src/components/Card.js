@@ -7,7 +7,7 @@ class Card {
     }
 
     _createCard() {
-        this._newCard = document.querySelector(this._templateSelector).content.querySelector('.elements__item').cloneNode(true);;
+        this._newCard = document.querySelector(this._templateSelector).content.querySelector('.elements__item').cloneNode(true);
     }
 
     _addData() {
