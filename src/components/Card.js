@@ -1,9 +1,9 @@
 class Card {
-    constructor(dataCard, templateSelector, openImage) {
+    constructor(dataCard, templateSelector, handleImageClick) {
         this._name = dataCard.name;
         this._link = dataCard.link;
         this._templateSelector = templateSelector;
-        this._openImage = openImage;
+        this._handleImageClick = handleImageClick;
     }
 
     _createCard() {
@@ -19,22 +19,22 @@ class Card {
     }
 
     _setEventListeners() {
-        this._likeBtn = this._newCard.querySelector('.elements__like');
-        this._likeBtn.addEventListener('click', () => this._likeCard());
+        this._btnLike = this._newCard.querySelector('.elements__like');
+        this._btnLike.addEventListener('click', () => this._likeCard());
 
-        const deleteBtn = this._newCard.querySelector('.elements__delete');
-        deleteBtn.addEventListener('click', () => this._deleteCard());
+        const btnDelete = this._newCard.querySelector('.elements__delete');
+        btnDelete.addEventListener('click', () => this._deleteCard());
 
-        this._photo.addEventListener('click', () => this._openImage(this._name, this._link));
+        this._photo.addEventListener('click', () => this._handleImageClick(this._name, this._link));
     }
 
     _likeCard() {
-        this._likeBtn.classList.toggle('elements__like_active');
+        this._btnLike.classList.toggle('elements__like_active');
     }
 
     _deleteCard() {
-        this._likeBtn.remove();
-        this._likeBtn = null;
+        this._btnLike.remove();
+        this._btnLike = null;
         this._photo.remove();
         this._photo = null;
         this._newCard.remove();
