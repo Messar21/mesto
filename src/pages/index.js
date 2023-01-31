@@ -15,12 +15,17 @@ function enableValidations(options) {
     });
 }
 
+function createCardElement (dataCard) {
+    const cardElement = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
+    const newCard = cardElement.getCard();
+    return newCard
+}
+
 const userInfo = new UserInfo({ selectorName: '.profile__name', selectorAbout: '.profile__about' });
 
 const cardsSection = new Section({ items: initialCards, renderer: (dataCard) => {
-        const card = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
-        const cardElement = card.getCard();
-        cardsSection.addItem(cardElement);
+        const card = createCardElement(dataCard)
+        cardsSection.addItem(card);
     } }, '.elements__list');
 
 const popupWithImage = new PopupWithImage('.popup_type_image');
@@ -39,8 +44,7 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }) =
         name: nameCard,
         link: link,
     }
-    const handleAddCard = new Card(newCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
-    const card = handleAddCard.getCard();
+    const card = createCardElement(newCard);
     cardsSection.addItem(card);
     popupCardAdd.close();
 });
