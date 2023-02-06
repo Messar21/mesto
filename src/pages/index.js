@@ -3,10 +3,24 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { btnEditProfile, btnAddCard, initialCards, options, btnEditAvatar } from "../utils/constants.js";
+import { btnEditProfile, btnAddCard, options, btnEditAvatar } from "../utils/constants.js";
 import './index.css';
 import UserInfo from "../components/UserInfo";
 import PopupAccept from "../components/PopupAccept";
+import Api from "../components/Api";
+
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-58/',
+    headers: {
+        authorization: '5ad038d3-aff7-428b-9266-e12345a82aaa',
+        'Content-Type': 'application/json'
+    }
+});
+
+api.getInitialCards().then((data) => {
+    cardsSection.renderItems(data);
+});
+
 
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
@@ -31,7 +45,7 @@ const popupDeleteCard = new PopupAccept('.popup_type_deleteCard', (evt) => {
 const userInfo = new UserInfo({ selectorName: '.profile__name',
     selectorAbout: '.profile__about', selectorAvatar: '.profile__avatar' });
 
-const cardsSection = new Section({ items: initialCards, renderer: (dataCard) => {
+const cardsSection = new Section({ renderer: (dataCard) => {
         const card = createCardElement(dataCard)
         cardsSection.addItem(card);
     } }, '.elements__list');
@@ -61,6 +75,12 @@ const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink },
     popupEditAvatar.close();
 });
 
+api.getUserInfo().then((data) => {
+    userInfo.setUserInfo(data);
+});
+
+
+
 
 
 popupEditProfile.setEventListeners();
@@ -69,7 +89,7 @@ popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
 popupDeleteCard.setEventListeners();
 
-cardsSection.renderItems();
+
 
 btnEditProfile.addEventListener('click', () => {
     popupEditProfile.open();
@@ -81,3 +101,4 @@ btnAddCard.addEventListener('click', () => popupCardAdd.open());
 btnEditAvatar.addEventListener('click', () => popupEditAvatar.open());
 
 enableValidations(options);
+
