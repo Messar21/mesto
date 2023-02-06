@@ -6,6 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import { btnEditProfile, btnAddCard, initialCards, options, btnEditAvatar } from "../utils/constants.js";
 import './index.css';
 import UserInfo from "../components/UserInfo";
+import PopupAccept from "../components/PopupAccept";
 
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
@@ -16,9 +17,16 @@ function enableValidations(options) {
 }
 
 function createCardElement (dataCard) {
-    const cardElement = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage));
+    const cardElement = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage),
+                        popupDeleteCard.open.bind(popupDeleteCard));
     return cardElement.getCard()
 }
+
+const popupDeleteCard = new PopupAccept('.popup_type_deleteCard', (evt) => {
+    evt.preventDefault();
+    popupDeleteCard.accept();
+    popupDeleteCard.close();
+})
 
 const userInfo = new UserInfo({ selectorName: '.profile__name',
     selectorAbout: '.profile__about', selectorAvatar: '.profile__avatar' });
@@ -53,10 +61,13 @@ const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink },
     popupEditAvatar.close();
 });
 
+
+
 popupEditProfile.setEventListeners();
 popupCardAdd.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
+popupDeleteCard.setEventListeners();
 
 cardsSection.renderItems();
 

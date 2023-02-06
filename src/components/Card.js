@@ -1,9 +1,10 @@
 class Card {
-    constructor(dataCard, templateSelector, handleImageClick) {
+    constructor(dataCard, templateSelector, handleImageClick, handleDeleteClick) {
         this._name = dataCard.name;
         this._link = dataCard.link;
         this._templateSelector = templateSelector;
         this._handleImageClick = handleImageClick;
+        this._handleDeleteClick = handleDeleteClick;
     }
 
     _createCard() {
@@ -23,7 +24,7 @@ class Card {
         this._btnLike.addEventListener('click', () => this._likeCard());
 
         const btnDelete = this._newCard.querySelector('.elements__delete');
-        btnDelete.addEventListener('click', () => this._deleteCard());
+        btnDelete.addEventListener('click', () => this._handleDeleteClick(this.deleteCard.bind(this)));
 
         this._photo.addEventListener('click', () => this._handleImageClick(this._name, this._link));
     }
@@ -32,7 +33,7 @@ class Card {
         this._btnLike.classList.toggle('elements__like_active');
     }
 
-    _deleteCard() {
+    deleteCard() {
         this._btnLike.remove();
         this._btnLike = null;
         this._photo.remove();
