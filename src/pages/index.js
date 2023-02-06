@@ -3,7 +3,7 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { btnEditProfile, btnAddCard, initialCards, options } from "../utils/constants.js";
+import { btnEditProfile, btnAddCard, initialCards, options, btnEditAvatar } from "../utils/constants.js";
 import './index.css';
 import UserInfo from "../components/UserInfo";
 
@@ -20,7 +20,8 @@ function createCardElement (dataCard) {
     return cardElement.getCard()
 }
 
-const userInfo = new UserInfo({ selectorName: '.profile__name', selectorAbout: '.profile__about' });
+const userInfo = new UserInfo({ selectorName: '.profile__name',
+    selectorAbout: '.profile__about', selectorAvatar: '.profile__avatar' });
 
 const cardsSection = new Section({ items: initialCards, renderer: (dataCard) => {
         const card = createCardElement(dataCard)
@@ -46,9 +47,16 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
     popupCardAdd.close();
 });
 
+const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink }, evt) => {
+    evt.preventDefault();
+    userInfo.setUserAvatar(avatarLink);
+    popupEditAvatar.close();
+});
+
 popupEditProfile.setEventListeners();
 popupCardAdd.setEventListeners();
 popupWithImage.setEventListeners();
+popupEditAvatar.setEventListeners();
 
 cardsSection.renderItems();
 
@@ -58,5 +66,7 @@ btnEditProfile.addEventListener('click', () => {
 });
 
 btnAddCard.addEventListener('click', () => popupCardAdd.open());
+
+btnEditAvatar.addEventListener('click', () => popupEditAvatar.open());
 
 enableValidations(options);
