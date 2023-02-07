@@ -45,4 +45,5 @@
 @import url("../blocks/profile/__avatar-btn/profile__avatar-btn.css");
 @import url("../blocks/popup/__form-heading/_type/popup__form-heading_type_deleteCard.css");
 @import url("../blocks/elements/__likes-count/elements__likes-count.css");
+@import url("../blocks/elements/__delete/_type/elements__delete_type_hidden.css");
 

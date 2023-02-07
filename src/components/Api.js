@@ -15,6 +15,10 @@ export default class Api {
                 if (res.ok) {
                     return res.json()
                 }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -29,6 +33,10 @@ export default class Api {
                 if (res.ok) {
                     return res.json()
                 }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -48,6 +56,33 @@ export default class Api {
                 if(res.ok) {
                     return res.json()
                 }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    setNewAvatar(link) {
+        return fetch(`${this._baseUrl}users/me/avatar`, {
+            method: "PATCH",
+            headers: {
+                authorization: this._headers.authorization,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                    avatar: link
+                }
+            )
+        })
+            .then(res => {
+                if(res.ok) {
+                    return res.json()
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -67,6 +102,64 @@ export default class Api {
                 if(res.ok) {
                     return res.json()
                 }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    deleteCard(cardId) {
+        return fetch(`${this._baseUrl}cards/${cardId}`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._headers.authorization
+            }
+        })
+            .then(res => {
+                if(res.ok) {
+                    return res.json()
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    putLikeToCard(cardId) {
+        return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
+            method: "PUT",
+            headers: {
+                authorization: this._headers.authorization
+            }
+        })
+            .then(res => {
+                if(res.ok) {
+                    return res.json()
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    deleteLikeToCard(cardId) {
+        return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._headers.authorization
+            }
+        })
+            .then(res => {
+                if(res.ok) {
+                    return res.json()
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 }
