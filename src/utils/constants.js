@@ -4,7 +4,6 @@ const btnAddCard = profile.querySelector('.profile__add-button');
 
 const btnEditAvatar = profile.querySelector('.profile__avatar-btn');
 
-
 const options = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',

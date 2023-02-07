@@ -25,7 +25,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         console.log(err);
     });
 
-
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
     formList.forEach((form) => {
@@ -136,14 +135,11 @@ const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink },
     popupEditAvatar.close();
 });
 
-
 popupEditProfile.setEventListeners();
 popupCardAdd.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditAvatar.setEventListeners();
 popupDeleteCard.setEventListeners();
-
-
 
 btnEditProfile.addEventListener('click', () => {
     popupEditProfile.open();
