@@ -21,6 +21,11 @@ api.getInitialCards().then((data) => {
     cardsSection.renderItems(data);
 });
 
+api.getUserInfo().then((data) => {
+    userInfo.setUserInfo(data);
+});
+
+
 
 function enableValidations(options) {
     const formList = Array.from(document.querySelectorAll(options.formSelector));
@@ -54,7 +59,9 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about }, evt) => {
     evt.preventDefault();
-    userInfo.setUserInfo(name, about);
+    api.sendUserInfo(name, about).then((data) => {
+        userInfo.setUserInfo(data);
+    })
     popupEditProfile.close();
 });
 
@@ -63,9 +70,11 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
     const dataCard = {
         name: nameCard,
         link: link,
-    }
-    const card = createCardElement(dataCard);
-    cardsSection.addItem(card);
+    };
+    api.postNewCard(dataCard).then((data) => {
+        const card = createCardElement(data);
+        cardsSection.addItem(card);
+    });
     popupCardAdd.close();
 });
 
@@ -74,13 +83,6 @@ const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink },
     userInfo.setUserAvatar(avatarLink);
     popupEditAvatar.close();
 });
-
-api.getUserInfo().then((data) => {
-    userInfo.setUserInfo(data);
-});
-
-
-
 
 
 popupEditProfile.setEventListeners();
