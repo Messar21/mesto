@@ -35,15 +35,17 @@ function enableValidations(options) {
 }
 
 function createCardElement (dataCard, userData) {
-    console.log(dataCard);
         const cardElement = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage),
             popupDeleteCard.open.bind(popupDeleteCard), userData,
             () => {
                 api.putLikeToCard(cardElement.cardId)
-                        .then((data) => {
-                            cardElement.refreshCountLikes(data.likes.length);
-                            cardElement.likeCard();
-                        })
+                    .then((data) => {
+                        cardElement.refreshCountLikes(data.likes.length);
+                        cardElement.likeCard();
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
                 },
             () => {
                 api.deleteLikeToCard(cardElement.cardId)
@@ -51,6 +53,9 @@ function createCardElement (dataCard, userData) {
                         cardElement.refreshCountLikes(data.likes.length);
                         cardElement.unlikeCard();
                     })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             });
         return cardElement.getCard()
 }
@@ -61,7 +66,10 @@ const popupDeleteCard = new PopupAccept('.popup_type_deleteCard', (evt) => {
         .then((data) => {
             console.log(data);
             popupDeleteCard.accept()
-        });
+        })
+        .catch((err) => {
+        console.log(err);
+    });
     popupDeleteCard.close();
 })
 
@@ -77,9 +85,17 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about }, evt) => {
     evt.preventDefault();
-    api.sendUserInfo(name, about).then((data) => {
+    popupEditProfile.startSaving();
+    api.sendUserInfo(name, about)
+        .then((data) => {
         userInfo.setUserInfo(data);
     })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            popupEditProfile.stopSaving();
+        });
     popupEditProfile.close();
 });
 
@@ -89,6 +105,7 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
         name: nameCard,
         link: link,
     };
+    popupCardAdd.startSaving();
     Promise.all([api.getUserInfo(), api.postNewCard(dataCard)])
         .then(([userData, dataCards]) => {
             const card = createCardElement(dataCards, userData);
@@ -96,16 +113,26 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
         })
         .catch((err) => {
             console.log(err);
+        })
+        .finally(() => {
+            popupCardAdd.stopSaving();
         });
     popupCardAdd.close();
 });
 
 const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink }, evt) => {
     evt.preventDefault();
-    api.setNewAvatar(avatarLink).then((userData) => {
+    popupEditAvatar.startSaving();
+    api.setNewAvatar(avatarLink)
+        .then((userData) => {
         userInfo.setUserAvatar(userData.avatar);
     })
-
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            popupEditAvatar.stopSaving();
+        });
     popupEditAvatar.close();
 });
 
