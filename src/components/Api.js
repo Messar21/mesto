@@ -10,7 +10,7 @@ export default class Api {
             headers: this._headers,
         })
             .then(res => {
-                this._getResponseData(res);
+               return this._getResponseData(res);
             })
     }
 
@@ -20,7 +20,7 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
     }
 
@@ -34,7 +34,7 @@ export default class Api {
             })
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
     }
 
@@ -48,7 +48,7 @@ export default class Api {
             )
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
     }
 
@@ -62,7 +62,7 @@ export default class Api {
             })
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
     }
 
@@ -72,7 +72,7 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
             
     }
@@ -83,7 +83,7 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
     }
 
@@ -93,7 +93,7 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                this._getResponseData(res);
+                return this._getResponseData(res);
             })
     }
 
