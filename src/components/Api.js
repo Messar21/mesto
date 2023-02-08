@@ -10,13 +10,7 @@ export default class Api {
             headers: this._headers,
         })
             .then(res => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
 
@@ -26,13 +20,7 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                if (res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
 
@@ -46,13 +34,7 @@ export default class Api {
             })
         })
             .then(res => {
-                if(res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
 
@@ -66,13 +48,7 @@ export default class Api {
             )
         })
             .then(res => {
-                if(res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
 
@@ -86,13 +62,7 @@ export default class Api {
             })
         })
             .then(res => {
-                if(res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
 
@@ -102,14 +72,9 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                if(res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
+                this._getResponseData(res);
             })
-            .catch((err) => {
-                console.log(err);
-            })
+            
     }
 
     putLikeToCard(cardId) {
@@ -118,13 +83,7 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                if(res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
 
@@ -134,13 +93,14 @@ export default class Api {
             headers: this._headers
         })
             .then(res => {
-                if(res.ok) {
-                    return res.json()
-                }
-                return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
-            })
-            .catch((err) => {
-                console.log(err);
+                this._getResponseData(res);
             })
     }
+
+    _getResponseData(res) {
+        if (!res.ok) {
+            return Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`); 
+        }
+        return res.json();
+    } 
 }

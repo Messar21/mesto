@@ -76,10 +76,6 @@ class Card {
     }
 
     deleteCard() {
-        this._btnLike.remove();
-        this._btnLike = null;
-        this._photo.remove();
-        this._photo = null;
         this._newCard.remove();
         this._newCard = null;
     }

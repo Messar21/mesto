@@ -88,6 +88,7 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about },
     api.sendUserInfo(name, about)
         .then((data) => {
         userInfo.setUserInfo(data);
+        popupEditProfile.close();
     })
         .catch((err) => {
             console.log(err);
@@ -95,7 +96,6 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about },
         .finally(() => {
             popupEditProfile.stopSaving();
         });
-    popupEditProfile.close();
 });
 
 const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, evt) => {
@@ -109,6 +109,7 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
         .then(([userData, dataCards]) => {
             const card = createCardElement(dataCards, userData);
             cardsSection.addItem(card);
+            popupCardAdd.close();
         })
         .catch((err) => {
             console.log(err);
@@ -116,7 +117,6 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
         .finally(() => {
             popupCardAdd.stopSaving();
         });
-    popupCardAdd.close();
 });
 
 const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink }, evt) => {
@@ -125,6 +125,7 @@ const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink },
     api.setNewAvatar(avatarLink)
         .then((userData) => {
         userInfo.setUserAvatar(userData.avatar);
+        popupEditAvatar.close();
     })
         .catch((err) => {
             console.log(err);
@@ -132,7 +133,6 @@ const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink },
         .finally(() => {
             popupEditAvatar.stopSaving();
         });
-    popupEditAvatar.close();
 });
 
 popupEditProfile.setEventListeners();
