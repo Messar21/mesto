@@ -1,11 +1,11 @@
 class Card {
     constructor(dataCard, templateSelector, handleImageClick, handleDeleteClick,
-                userData, handlePutLike, handleDeleteLike) {
+                userId, handlePutLike, handleDeleteLike) {
         this._name = dataCard.name;
         this._link = dataCard.link;
         this.cardId = dataCard._id;
         this._ownerId = dataCard.owner._id;
-        this._userId = userData._id;
+        this._userId = userId;
         this._arrayOfLikes = dataCard.likes;
         this._numberOfLikes = this._arrayOfLikes.length;
         this._templateSelector = templateSelector;

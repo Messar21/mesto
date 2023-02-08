@@ -9,7 +9,10 @@ export default class PopupAccept extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        this._formElement.addEventListener('submit', (evt) => this._handleSubmit(evt))
+        this._formElement.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+            this._handleSubmit();
+        })
     }
 
     open(acceptFunction, cardId) {

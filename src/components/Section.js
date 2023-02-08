@@ -4,9 +4,9 @@ export default class Section {
         this._container = document.querySelector(containerSelector);
     }
 
-    renderItems(dataCards, userData) {
+    renderItems(dataCards, userId) {
         dataCards.forEach((item) => {
-            this._renderer(item, userData);
+            this._renderer(item, userId);
         })
     }
 

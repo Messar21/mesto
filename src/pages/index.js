@@ -19,7 +19,7 @@ const api = new Api({
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, dataCards]) => {
         userInfo.setUserInfo(userData);
-        cardsSection.renderItems(dataCards, userData);
+        cardsSection.renderItems(dataCards, userData._id);
     })
     .catch((err) => {
         console.log(err);
@@ -33,9 +33,9 @@ function enableValidations(options) {
     });
 }
 
-function createCardElement (dataCard, userData) {
+function createCardElement (dataCard, userId) {
         const cardElement = new Card(dataCard, '#photo-template', popupWithImage.open.bind(popupWithImage),
-            popupDeleteCard.open.bind(popupDeleteCard), userData,
+            popupDeleteCard.open.bind(popupDeleteCard), userId,
             () => {
                 api.putLikeToCard(cardElement.cardId)
                     .then((data) => {
@@ -59,8 +59,7 @@ function createCardElement (dataCard, userData) {
         return cardElement.getCard()
 }
 
-const popupDeleteCard = new PopupAccept('.popup_type_deleteCard', (evt) => {
-    evt.preventDefault();
+const popupDeleteCard = new PopupAccept('.popup_type_deleteCard', () => {
     api.deleteCard(popupDeleteCard.cardId)
         .then((data) => {
             console.log(data);
@@ -75,15 +74,14 @@ const popupDeleteCard = new PopupAccept('.popup_type_deleteCard', (evt) => {
 const userInfo = new UserInfo({ selectorName: '.profile__name',
     selectorAbout: '.profile__about', selectorAvatar: '.profile__avatar' });
 
-const cardsSection = new Section({ renderer: (dataCard, userData) => {
-        const card = createCardElement(dataCard, userData);
+const cardsSection = new Section({ renderer: (dataCard, userId) => {
+        const card = createCardElement(dataCard, userId);
         cardsSection.addItem(card);
     } }, '.elements__list');
 
 const popupWithImage = new PopupWithImage('.popup_type_image');
 
-const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about }, evt) => {
-    evt.preventDefault();
+const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about }) => {
     popupEditProfile.startSaving();
     api.sendUserInfo(name, about)
         .then((data) => {
@@ -98,16 +96,15 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit', ({ name, about },
         });
 });
 
-const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, evt) => {
-    evt.preventDefault();
+const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }) => {
     const dataCard = {
         name: nameCard,
         link: link,
     };
     popupCardAdd.startSaving();
-    Promise.all([api.getUserInfo(), api.postNewCard(dataCard)])
-        .then(([userData, dataCards]) => {
-            const card = createCardElement(dataCards, userData);
+    api.postNewCard(dataCard)
+        .then((cardData) => {
+            const card = createCardElement(cardData, cardData.owner._id);
             cardsSection.addItem(card);
             popupCardAdd.close();
         })
@@ -119,8 +116,7 @@ const popupCardAdd = new PopupWithForm('.popup_type_add', ({ nameCard, link }, e
         });
 });
 
-const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink }, evt) => {
-    evt.preventDefault();
+const popupEditAvatar = new PopupWithForm('.popup_type_avatar', ({ avatarLink }) => {
     popupEditAvatar.startSaving();
     api.setNewAvatar(avatarLink)
         .then((userData) => {
